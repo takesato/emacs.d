@@ -4,22 +4,28 @@
 ;; initial settings
 (setq inhibit-startup-message t)            ; スタートページ非表示
 (setq ring-bell-function 'ignore)           ; ベルを鳴らさない
+
 ;;; mode line
 (setq line-number-mode t)
 (setq column-number-mode t)                 ; ステータスに行番号＆列番号表示
 (setq truncate-lines nil)                   ; 折り返し
 (setq truncate-partial-width-windows nil)   ; 分割時にもきちんと折り返す
 
-;; Window settings
-(if window-system
-    (progn
-      (set-frame-parameter nil 'alpha 70)       ; 透明度
-      (menu-bar-mode t)                         ; メニューバー表示
-      (tool-bar-mode nil)                       ; ツールバー非表示
-      (set-scroll-bar-mode 'right)              ; スクロールバー表示
-      (setq line-spacing 0.2)                   ; 行間
-      (setq ns-pop-up-frames nil)               ; 複数の emacs を開かない
-))
+(set-frame-parameter nil 'alpha 70)       ; 透明度
+(menu-bar-mode -1)                        ; メニューバー非表示
+(tool-bar-mode -1)                        ; ツールバー非表示
+(set-scroll-bar-mode 'right)              ; スクロールバー表示
+(setq line-spacing 0.2)                   ; 行間
+(setq ns-pop-up-frames nil)               ; 複数の emacs を開かない
+
+(require 'tron-theme)
+;(load-theme 'tron t)
+;(enable-theme 'tron)
+
+;;; (require 'color-theme)
+;;; (color-theme-initialize)
+;;; (color-theme-molokai) ;; 使うカラーテーマ名
+
 ;; for time on status line
 (progn
   (setq display-time-string-forms
@@ -46,9 +52,6 @@
 (show-paren-mode t)
 
 (setq kill-whole-line t)
-
-(tool-bar-mode -1)
-(menu-bar-mode -1)
 
 ;; 分割を左右に
 (setq howm-view-split-horizontally t)
@@ -87,14 +90,13 @@
   (unless (and (fboundp 'org-mode-p) (org-mode-p))
     ad-do-it))
 
-;;; linum
-;; 行番号を表示
+;; linum （行番号）
 (global-linum-mode t)
 (setq linum-format "%4d ")
-;(setq linum-format "%4d \u2502")
-;; linum （行番号）
 (set-face-foreground 'linum "#000")
-(set-face-background 'linum "#c53d43")
+(set-face-background 'linum "#48B0AA")
+;(setq linum-format "%4d \u2502")
+;(set-face-background 'linum "#c53d43")
 
 (require 'cl)
 
@@ -131,14 +133,6 @@
 
 (global-git-gutter-mode +1)
 
-(require 'tron-theme)
-;(load-theme 'tron t)
-;(enable-theme 'tron)
-
-;;; (require 'color-theme)
-;;; (color-theme-initialize)
-;;; (color-theme-molokai) ;; 使うカラーテーマ名
-
 ;;; https://github.com/Wilfred/ag.el
 (setq ag-highlight-search t)
 
@@ -150,15 +144,10 @@
 (global-hl-line-mode)
 
 (setq whitespace-style '(face tabs tab-mark trailing empty indentation::space spaces space-mark trailing space-before-tab space-after-tab::space))
-;(setq whitespace-display-mappings
-;      '((tab-mark ?\t [?\xBB ?\t] [?\\ ?\t])))
-;(set-face-foreground 'whitespace-tab "#ff0000")
-;(set-face-background 'whitespace-tab 'nil)
-;(set-face-underline  'whitespace-tab t)
 (setq whitespace-space-regexp "\\(\x3000+\\)")
 (setq whitespace-display-mappings
-      '((space-mark ?\x3000 [?\[]])
-        (tab-mark   ?\t   [?\xBB ?\t])
+      '((space-mark ?\x3000 [?　])
+        (tab-mark   ?\t [?\xBB ?\t])
 (set-face-attribute 'whitespace-trailing nil
                     :foreground "DeepPink"
                                         :underline t)

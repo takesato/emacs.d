@@ -50,7 +50,7 @@
              (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
 
 ;;; http://tuxicity.se/emacs/elisp/2010/03/26/rename-file-and-buffer-in-emacs.html
-;;; Renamefile and buffer 
+;;; Renamefile and buffer
 (defun rename-this-buffer-and-file ()
   "Renames current buffer and file it is visiting."
   (interactive)

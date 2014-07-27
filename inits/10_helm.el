@@ -35,7 +35,7 @@
       (setq input-pattern (replace-regexp-in-string "\\." "\\\\." input-pattern))
       (setq ad-return-value
             (concat dirname
-		    (if (string-match "^\\^" input-pattern)
+                    (if (string-match "^\\^" input-pattern)
                         ;; '^' is a pattern for basename
                         ;; and not required because the directory name is prepended
                         (substring input-pattern 1)

@@ -28,7 +28,7 @@
          (params2
           (list
            :splice t
-	         :hline (concat alignment "|")
+           :hline (concat alignment "|")
            :lstart "| " :lend " |" :sep " | ")))
     (orgtbl-to-generic table (org-combine-plists params2 params))))
 
