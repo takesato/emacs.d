@@ -1,7 +1,7 @@
 ;; direx-el
 ;; (use popwin-el devloper ver.)
 ;; https://github.com/m2ym/direx-el
-;; (require 'direx)
+(require 'direx)
 (require 'popwin)
 (setq display-buffer-function 'popwin:display-buffer)
 (require 'direx-project)

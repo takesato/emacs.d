@@ -1,10 +1,12 @@
-;;; (require 'rubocop)
-;;; (add-hook 'ruby-mode-hook 'rubocop-mode)
+(require 'rbenv)
 
-;(require 'rbenv)
 ;; ruby-mode
 (autoload 'ruby-mode "ruby-mode" "Mode for editing ruby source files" t)
 (setq interpreter-mode-alist (append '(("ruby" . ruby-mode)) interpreter-mode-alist))
+
+;; set ruby-mode indent
+(setq ruby-indent-level 2)
+(setq ruby-indent-tabs-mode nil)
 
 ;; magickコメント挿入関数を無効にする ruby2.0用
 ;; http://d.hatena.ne.jp/akm/20080605#1212644489
@@ -15,28 +17,20 @@
 (ruby-block-mode t)
 (setq ruby-block-highlight-toggle t)    ; nothing | minibuffer | overlay | t <- (minibuffer and overlay)
 
+(require 'ruby-electric)
+(add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))
+(setq ruby-electric-expand-delimiters-list nil)
+
 ;; inf-ruby.el
 (autoload 'run-ruby "inf-ruby" "Run an inferior Ruby process")
 (autoload 'inf-ruby-keys "inf-ruby" "Set local key defs for inf-ruby in ruby-mode")
 (add-hook 'ruby-mode-hook '(lambda () (inf-ruby-keys)))
 
-;; set ruby-mode indent
-(setq ruby-indent-level 2)
-(setq ruby-indent-tabs-mode nil)
-
-;;; inf-ruby
-(autoload 'run-ruby "inf-ruby"
-  "Run an inferior Ruby process")
-(autoload 'inf-ruby-keys "inf-ruby"
-  "Set local key defs for inf-ruby in ruby-mode")
-(add-hook 'ruby-mode-hook
-          '(lambda () (inf-ruby-keys)))
-
 ;;; rubydb
-(autoload 'rubydb "rubydb3x"
-  "run rubydb on program file in buffer *gud-file*.
-the directory containing file becomes the initial working directory
-and source-file directory for your debugger." t)
+;;; (autoload 'rubydb "rubydb3x"
+;;;   "run rubydb on program file in buffer *gud-file*.
+;;; the directory containing file becomes the initial working directory
+;;; and source-file directory for your debugger." t)
 
 ;; flycheck
 (add-hook 'ruby-mode-hook
@@ -45,6 +39,7 @@ and source-file directory for your debugger." t)
              (flycheck-mode 1)))
 
 ;;; http://willnet.in/13
+;;; indent調整
 (defadvice ruby-indent-line (after unindent-closing-paren activate)
   (let ((column (current-column))
         indent offset)

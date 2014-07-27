@@ -2,34 +2,33 @@
 (source marmalade)
 (source melpa)
 
-(depends-on "color-theme-molokai")
+;(depends-on "color-theme")
+;(depends-on "color-theme-molokai")
 (depends-on "tron-theme")
 
-
-(depends-on "anzu")
 ;(depends-on "emoji-cheat-sheet")
-;(depends-on "direx-projects")
 ;(depends-on "direx-project")
+
 
 (depends-on "helm")
 (depends-on "helm-ag")
 (depends-on "helm-dash")
 (depends-on "helm-ghq")
 
+(depends-on "anzu")
 (depends-on "dash-at-point")
 (depends-on "direx")
 (depends-on "init-loader")
 (depends-on "migemo")
-;(depends-on "direx-project")
 (depends-on "color-moccur")
 (depends-on "flycheck-pos-tip")
-(depends-on "minimap")
+;(depends-on "minimap")
+(depends-on "whitespace")
 
 (depends-on "ag")
 ;(depends-on "anything")
 (depends-on "auto-complete")
 (depends-on "browse-kill-ring")
-(depends-on "color-theme")
 ;(depends-on "elscreen" :git "git@github.com:knu/elscreen.git")
 (depends-on "flycheck")
 (depends-on "pbcopy")
@@ -66,6 +65,7 @@
 (depends-on "ruby-compilation")
 (depends-on "ruby-hash-syntax")
 ;(depends-on "motion-mode")
+(depends-on "inf-ruby")
 
 ;;; javascript
 (depends-on "coffee-mode")
@@ -75,6 +75,8 @@
 ;;; git
 (depends-on "magit")
 (depends-on "git-gutter")
+(depends-on "git-commit-mode")
+(depends-on "git-rebase-mode")
 
 (depends-on "go-autocomplete")
 
@@ -89,8 +91,6 @@
 (depends-on "expand-region")
 (depends-on "f")
 (depends-on "flycheck-cask")
-(depends-on "git-commit-mode")
-(depends-on "git-rebase-mode")
 (depends-on "htmlize")
 (depends-on "idle-highlight-mode")
 (depends-on "multiple-cursors")

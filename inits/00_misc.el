@@ -146,3 +146,27 @@
 (add-hook 'sh-mode-hook '(lambda () (interactive)
                            (setq sh-basic-offset 2 sh-indentation 2)))
 
+;; 現在行をハイライト
+(global-hl-line-mode)
+
+(setq whitespace-style '(face tabs tab-mark trailing empty indentation::space spaces space-mark trailing space-before-tab space-after-tab::space))
+;(setq whitespace-display-mappings
+;      '((tab-mark ?\t [?\xBB ?\t] [?\\ ?\t])))
+;(set-face-foreground 'whitespace-tab "#ff0000")
+;(set-face-background 'whitespace-tab 'nil)
+;(set-face-underline  'whitespace-tab t)
+(setq whitespace-space-regexp "\\(\x3000+\\)")
+(setq whitespace-display-mappings
+      '((space-mark ?\x3000 [?\[]])
+        (tab-mark   ?\t   [?\xBB ?\t])
+(set-face-attribute 'whitespace-trailing nil
+                    :foreground "DeepPink"
+                                        :underline t)
+(set-face-attribute 'whitespace-tab nil
+                    :foreground "LightSkyBlue"
+                                        :underline t)
+(set-face-attribute 'whitespace-space nil
+                    :foreground "GreenYellow"
+                                        :weight 'bold)))
+(global-whitespace-mode t)
+(global-set-key (kbd "C-x w") 'global-whitespace-mode)
