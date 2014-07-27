@@ -9,10 +9,7 @@
   (setq mac-command-modifier 'super) ; コマンドキーを Super に
   (setq mac-pass-control-to-system t)) ; コントロールキーを Mac ではなく Emacs に渡す
 
-(define-key global-map [(super a)] 'anything)
-
-;(define-key global-map (kbd "C-q")   'anything) ; そのお隣り
-;(define-key global-map (kbd "C-z")   'anything) ; そのお隣り
+;(define-key global-map [(super a)] 'anything)
 
 (defun copy-from-osx ()
    (shell-command-to-string "pbpaste"))
@@ -25,3 +22,6 @@
 
 (setq interprogram-cut-function 'paste-to-osx)
 (setq interprogram-paste-function 'copy-from-osx)
+
+(require 'emoji-display)
+(emoji-display-mode)

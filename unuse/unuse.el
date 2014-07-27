@@ -1,8 +1,8 @@
-      ;(set-frame-font "Ricty-18")
-      ;; fullscreen
-      ;; (auto-install-from-emacswiki "fullscreen.el")
-      ;; (require 'fullscreen)                     ; 起動時にフルスクリーンにする
-      ;; (fullscreen)
+(set-frame-font "Ricty-18")
+;; fullscreen
+(auto-install-from-emacswiki "fullscreen.el")
+(require 'fullscreen)                     ; 起動時にフルスクリーンにする
+(fullscreen)
 
 ;;; todotxt
 ;;;(require 'todotxt)
@@ -370,3 +370,15 @@
 ;;;(custom-set-faces
 ;;; '(col-highlight ((t (:background "#333333")))))
 
+;;; http://what-linux.seesaa.net/article/158676846.html
+;;;; tree-undo
+(when (require 'undo-tree nil t)
+  (global-undo-tree-mode))
+
+;; http://qiita.com/nysalor/items/a3810f0e5e796384a4f2
+;; 先にdiredが必要
+(require 'dired)
+;; キーバインドは適当
+(require 'peep-dired)
+(define-key dired-mode-map "\C-xx" 'peep-dired)
+(define-key peep-dired-mode-map "\C-xx" 'peep-dired)

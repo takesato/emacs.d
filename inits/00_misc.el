@@ -4,6 +4,8 @@
 ;; initial settings
 (setq inhibit-startup-message t)            ; スタートページ非表示
 (setq ring-bell-function 'ignore)           ; ベルを鳴らさない
+;;; mode line
+(setq line-number-mode t)
 (setq column-number-mode t)                 ; ステータスに行番号＆列番号表示
 (setq truncate-lines nil)                   ; 折り返し
 (setq truncate-partial-width-windows nil)   ; 分割時にもきちんと折り返す
@@ -75,7 +77,7 @@
 (c-set-offset 'case-label '+)
 
 ;; narrowingを使う
-(put 'narrow-to-region 'disabled nil)
+(put 'narrow-to-region 'disabled nil)  ; C-c n n, C-c n w
 
 ;; タイムローケールを英語に
 (setq system-time-locale "C")
@@ -89,11 +91,10 @@
 ;; 行番号を表示
 (global-linum-mode t)
 (setq linum-format "%4d ")
-
-;;; ruler-mode
-;; ルーラーを表示
-(add-hook 'text-mode-hook 'ruler-mode)
-
+;(setq linum-format "%4d \u2502")
+;; linum （行番号）
+(set-face-foreground 'linum "#000")
+(set-face-background 'linum "#c53d43")
 
 (require 'cl)
 
@@ -108,6 +109,40 @@
   (switch-to-buffer (generate-new-buffer "*temp*"))
   (setq buffer-offer-save nil))
 ;; C-c t でテンポラリバッファを作成します。
-(global-set-key "\C-ct" 'create-temporary-buffer)
+(global-set-key (kbd "C-c t") 'create-temporary-buffer)
 
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
+
+(global-set-key (kbd "C-c r") 'rename-this-buffer-and-file)
+
+(autoload 'dash-at-point "dash-at-point"
+          "Search the word at point with Dash." t nil)
+(global-set-key (kbd "C-c d") 'dash-at-point)
+(global-set-key (kbd "C-c e") 'dash-at-point-with-docset)
+
+;; avoid "Symbolic link to SVN-controlled source file; follow link? (yes or no)"
+(setq vc-follow-symlinks t)
+
+(eval-after-load 'flycheck
+  '(custom-set-variables
+   '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages)))
+
+(global-set-key [kp-delete] 'delete-char)
+
+(global-git-gutter-mode +1)
+
+(require 'tron-theme)
+;(load-theme 'tron t)
+;(enable-theme 'tron)
+
+;;; (require 'color-theme)
+;;; (color-theme-initialize)
+;;; (color-theme-molokai) ;; 使うカラーテーマ名
+
+;;; https://github.com/Wilfred/ag.el
+(setq ag-highlight-search t)
+
+;; indent
+(add-hook 'sh-mode-hook '(lambda () (interactive)
+                           (setq sh-basic-offset 2 sh-indentation 2)))
+

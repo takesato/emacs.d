@@ -1,5 +1,7 @@
 ;;; auto-complete
+(require 'auto-complete)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(require 'auto-complete-config)
 (ac-config-default)
 (global-set-key (kbd "M-_") 'auto-complete)
 (setq ac-auto-start 1)       ; 補完を開始する文字数
@@ -33,18 +35,18 @@
              (setq ac-sources '(ac-source-words-in-buffer))))
 
 ; for objc-mode
-(setq ac-modes (append ac-modes '(objc-mode)))
-(add-to-list  'etags-table-alist
-              '("\\.[mh]$" "~/.emacs.d/tags/objc.TAGS"))
-(defvar ac-source-etags-table
-  '((candidates . (lambda ()
-         (all-completions ac-target (tags-completion-table))))
-    (candidate-face . ac-candidate-face)
-    (selection-face . ac-selection-face)
-    (requires . 1))
-  "etags をソースにする")
-(add-hook 'objc-mode-hook
-          (lambda ()
-           (push 'ac-source-company-xcode ac-sources)
-           (push 'ac-source-c++-keywords ac-sources)
-           (push 'ac-source-etags-table ac-sources)))
+;;;(setq ac-modes (append ac-modes '(objc-mode)))
+;;;(add-to-list  'etags-table-alist
+;;;              '("\\.[mh]$" "~/.emacs.d/tags/objc.TAGS"))
+;;;(defvar ac-source-etags-table
+;;;  '((candidates . (lambda ()
+;;;         (all-completions ac-target (tags-completion-table))))
+;;;    (candidate-face . ac-candidate-face)
+;;;    (selection-face . ac-selection-face)
+;;;    (requires . 1))
+;;;  "etags をソースにする")
+;;;(add-hook 'objc-mode-hook
+;;;          (lambda ()
+;;;           (push 'ac-source-company-xcode ac-sources)
+;;;           (push 'ac-source-c++-keywords ac-sources)
+;;;           (push 'ac-source-etags-table ac-sources)))

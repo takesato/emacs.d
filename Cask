@@ -6,6 +6,11 @@
 (depends-on "tron-theme")
 
 
+(depends-on "anzu")
+;(depends-on "emoji-cheat-sheet")
+;(depends-on "direx-projects")
+;(depends-on "direx-project")
+
 (depends-on "helm")
 (depends-on "helm-ag")
 (depends-on "helm-dash")

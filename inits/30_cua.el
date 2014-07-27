@@ -1,13 +1,8 @@
-;(cua-mode t)
-;(setq cua-enable-cua-keys nil)
-;
-;(global-set-key (kbd "C-c C-b") 'cua-toggle-rectangle-mark)
-
 ;;; cua-mode
- (cua-mode t)
- (setq cua-enable-cua-keys nil)
- (setq cua-auto-tabify-rectangles nil)  ;; Don't tabify after rectangle commands
- (transient-mark-mode 1)                ;; No region when it is not highlighted
+(cua-mode t)
+(setq cua-enable-cua-keys nil)  ; CUAキーバインドを無効化
+(setq cua-auto-tabify-rectangles nil)  ;; Don't tabify after rectangle commands
+(transient-mark-mode 1)                ;; No region when it is not highlighted
 ; (transient-mark-mode t)
 ; (setq cua-keep-region-after-copy t)    ;; Standard Windows behaviour
 

@@ -1,5 +1,5 @@
-(require 'rubocop)
-(add-hook 'ruby-mode-hook 'rubocop-mode)
+;;; (require 'rubocop)
+;;; (add-hook 'ruby-mode-hook 'rubocop-mode)
 
 ;(require 'rbenv)
 ;; ruby-mode
@@ -11,16 +11,9 @@
 (defun ruby-mode-set-encoding () ())
 
 ;; ruby-block
+(require 'ruby-block)
 (ruby-block-mode t)
-
-;; 何もしない
-;(setq ruby-block-highlight-toggle 'noghing)
-;; ミニバッファに表示
-;(setq ruby-block-highlight-toggle 'minibuffer)
-;; オーバレイする
-;(setq ruby-block-highlight-toggle 'overlay)
-;; ミニバッファに表示し, かつ, オーバレイする.
-(setq ruby-block-highlight-toggle t)
+(setq ruby-block-highlight-toggle t)    ; nothing | minibuffer | overlay | t <- (minibuffer and overlay)
 
 ;; inf-ruby.el
 (autoload 'run-ruby "inf-ruby" "Run an inferior Ruby process")
@@ -45,25 +38,11 @@
 the directory containing file becomes the initial working directory
 and source-file directory for your debugger." t)
 
-(ruby-block-mode t)
-(setq ruby-block-highlight-toggle t)    ; nothing | minibuffer | overlay | t <- (minibuffer and overlay)
-
-;; for ruby
-(defun flymake-ruby-init ()
-  (let* ((temp-file   (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace))
-         (local-file  (file-relative-name
-                       temp-file
-                       (file-name-directory buffer-file-name))))
-    (list "ruby" (list "-c" local-file))))
-(push '(".+\\.rb$" flymake-ruby-init) flymake-allowed-file-name-masks)
-(push '("Rakefile$" flymake-ruby-init) flymake-allowed-file-name-masks)
-(push '("^\\(.*\\):\\([0-9]+\\): \\(.*\\)$" 1 2 nil 3) flymake-err-line-patterns)
-(add-hook
- 'ruby-mode-hook
- '(lambda ()
-    (if (not (null buffer-file-name)) (flymake-mode))
-    (define-key ruby-mode-map "\C-cd" 'credmp/flymake-display-err-minibuf)))
+;; flycheck
+(add-hook 'ruby-mode-hook
+          '(lambda ()
+             (setq flycheck-checker 'ruby-rubocop)
+             (flycheck-mode 1)))
 
 ;;; http://willnet.in/13
 (defadvice ruby-indent-line (after unindent-closing-paren activate)
@@ -80,3 +59,17 @@ and source-file directory for your debugger." t)
     (when indent
       (indent-line-to indent)
       (when (> offset 0) (forward-char offset)))))
+
+(require 'rspec-mode)
+(custom-set-variables '(rspec-use-rake-flag nil))
+(global-set-key [f10] 'rspec-verify-single)
+(defun my-compilation-hook ()
+  (when (not (get-buffer-window "*compilation*"))
+    (save-selected-window
+      (save-excursion
+        (let* ((w (split-window-vertically))
+               (h (window-height w)))
+          (select-window w)
+          (switch-to-buffer "*compilation*")
+          (shrink-window (- h 10)))))))
+(add-hook 'compilation-mode-hook 'my-compilation-hook)

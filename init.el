@@ -1,12 +1,5 @@
 (require 'cask "/usr/local/opt/cask/cask.el")
 (cask-initialize)
-;(require 'pallet)
-
-;; SKK用
-(add-to-list 'load-path "~/.emacs.d/elisp/skk")
-(setq load-path (cons "~/.emacs.d/etc/skk" load-path))
-;; hown用
-(add-to-list 'load-path "~/.emacs.d/elisp/howm/")
 
 ; ~/.emacs.d/site-lisp 以下全部読み込み
 (let ((default-directory (expand-file-name "~/.emacs.d/site-lisp")))

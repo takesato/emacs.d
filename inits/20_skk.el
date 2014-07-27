@@ -6,12 +6,12 @@
 
 ;; SKK
 (let ((function #'(lambda ()
-        (require 'skk)
-        (skk-latin-mode-on))))
+                    (require 'skk)
+                    (skk-latin-mode-on))))
   (dolist (hook '(find-file-hooks
-      ;; ...
-      mail-setup-hook
-      message-setup-hook))
+                  ;; ...
+                  mail-setup-hook
+                  message-setup-hook))
     (add-hook hook function)))
 
 (setq skk-preload t)
