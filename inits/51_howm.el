@@ -5,7 +5,7 @@
 
 (require 'howm)
 
-(setq howm-directory "~/workspace/bitbucket.org/dr/howm")
+(setq howm-directory "~/workspace/bitbucket.org/takesato/dr/howm")
 
 (autoload 'howm-menu "howm" "Hitori Otegaru Wiki Modoki" t)
 
@@ -16,7 +16,7 @@
 ; disable auto-fill-mode
 (add-hook 'howm-mode-hook '(lambda () (auto-fill-mode -1)))
 
-(setq howm-menu-file "~/workspace/bitbucket.org/dr/.howm-menu")
+(setq howm-menu-file "~/workspace/bitbucket.org/takesato/dr/.howm-menu")
 
 ;; メモ置き場/年/月/年_月_日.howm に
 (setq howm-file-name-format "%Y/%m/%Y_%m_%d.md")

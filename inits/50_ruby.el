@@ -1,4 +1,5 @@
 (require 'rbenv)
+(global-rbenv-mode)
 
 ;; ruby-mode
 (autoload 'ruby-mode "ruby-mode" "Mode for editing ruby source files" t)

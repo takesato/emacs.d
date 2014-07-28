@@ -14,7 +14,7 @@
 (set-frame-parameter nil 'alpha 70)       ; 透明度
 (menu-bar-mode -1)                        ; メニューバー非表示
 (tool-bar-mode -1)                        ; ツールバー非表示
-(set-scroll-bar-mode 'right)              ; スクロールバー表示
+;(set-scroll-bar-mode 'right)              ; スクロールバー表示
 (setq line-spacing 0.2)                   ; 行間
 (setq ns-pop-up-frames nil)               ; 複数の emacs を開かない
 
@@ -159,3 +159,5 @@
                                         :weight 'bold)))
 (global-whitespace-mode t)
 (global-set-key (kbd "C-x w") 'global-whitespace-mode)
+
+(global-auto-revert-mode 1)
