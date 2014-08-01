@@ -6,9 +6,14 @@
 ;(depends-on "color-theme-molokai")
 (depends-on "tron-theme")
 
+
 ;(depends-on "emoji-cheat-sheet")
 ;(depends-on "direx-project")
 
+(depends-on "saveplace")
+(depends-on "request")
+(depends-on "smartrep")
+(depends-on "exec-path-from-shell")
 
 (depends-on "helm")
 (depends-on "helm-ag")

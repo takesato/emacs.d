@@ -161,3 +161,47 @@
 (global-set-key (kbd "C-x w") 'global-whitespace-mode)
 
 (global-auto-revert-mode 1)
+
+(setq recentf-save-file (expand-file-name ".recentf" user-emacs-directory))
+(recentf-mode 1)
+
+(setq-default save-place t)
+
+(require 'multiple-cursors)
+
+(require 'smartrep)
+(global-set-key (kbd "M-[") 'er/expand-region)
+(global-set-key (kbd "M-]") 'er/contract-region)
+
+(global-set-key (kbd "<C-M-RET>") 'mc/edit-lines)
+(smartrep-define-key
+ global-map "C-q" '(("C-n" . 'mc/mark-next-like-this)
+                    ("C-p" . 'mc/mark-previous-like-this)
+                    ("*"   . 'mc/mark-all-like-this)))
+
+;; ファイルなら別バッファで、ディレクトリなら同じバッファで開く
+;(defun dired-open-in-accordance-with-situation ()
+;  (interactive)
+;  (let ((file (dired-get-filename)))
+;    (if (file-directory-p file)
+;        (dired-find-alternate-file)
+;      (dired-find-file))))
+;;; dired-find-alternate-file の有効化
+;(put 'dired-find-alternate-file 'disabled nil)
+;;; RET 標準の dired-find-file では dired バッファが複数作られるので
+;;; dired-find-alternate-file を代わりに使う
+;(define-key dired-mode-map (kbd "RET") 'dired-open-in-accordance-with-situation)
+;(define-key dired-mode-map (kbd "a") 'dired-find-file)
+;;; ディレクトリの移動キーを追加(wdired 中は無効)
+;(define-key dired-mode-map (kbd "<left>") 'dired-up-directory)
+;(define-key dired-mode-map (kbd "<right>") 'dired-open-in-accordance-with-situation)
+; 
+;(defun quickfix-open (files)
+;  (setq-default compilation-directory default-directory)
+;  (compilation-start
+;   (concat "cat "
+;           (mapconcat #'shell-quote-argument files " "))))
+
+; (server-buffer-done (current-buffer) t)
+
+;exec-path-from-shell-initialize
