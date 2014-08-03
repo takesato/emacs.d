@@ -142,6 +142,8 @@
 
 ;; 現在行をハイライト
 (global-hl-line-mode)
+(set-face-background 'hl-line "#3e4446")
+(set-face-foreground 'highlight nil)
 
 (setq whitespace-style '(face tabs tab-mark trailing empty indentation::space spaces space-mark trailing space-before-tab space-after-tab::space))
 (setq whitespace-space-regexp "\\(\x3000+\\)")

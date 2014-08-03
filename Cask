@@ -79,7 +79,7 @@
 
 ;;; git
 (depends-on "magit")
-(depends-on "git-gutter")
+(depends-on "git-gutter-fringe")
 (depends-on "git-commit-mode")
 (depends-on "git-rebase-mode")
 

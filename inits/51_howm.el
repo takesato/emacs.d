@@ -17,6 +17,10 @@
 (add-hook 'howm-mode-hook '(lambda () (auto-fill-mode -1)))
 
 (setq howm-menu-file "~/workspace/bitbucket.org/takesato/dr/.howm-menu")
+(setq howm-keyword-file "~/workspace/bitbucket.org/takesato/dr/.howm-keys")
+(setq howm-history-file "~/workspace/bitbucket.org/takesato/dr/.howm-history")
+
+(setq org-todo-keywords '((sequence "[ ]" "[x]")))
 
 ;; メモ置き場/年/月/年_月_日.howm に
 (setq howm-file-name-format "%Y/%m/%Y_%m_%d.md")

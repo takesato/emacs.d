@@ -16,6 +16,7 @@
 
 (setq skk-preload t)
 
+(setq skk-kutouten-type 'en)
 ;; C-j の機能を別のキーに割り当て
 (global-set-key (kbd "C-m") 'newline-and-indent)
 ;; C-\ でも SKK に切り替えられるように設定
