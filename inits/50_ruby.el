@@ -11,7 +11,8 @@
 
 ;; magickコメント挿入関数を無効にする ruby2.0用
 ;; http://d.hatena.ne.jp/akm/20080605#1212644489
-(defun ruby-mode-set-encoding () ())
+;;(defun ruby-mode-set-encoding () ())
+(setq ruby-insert-encoding-magic-comment nil)
 
 ;; ruby-block
 (require 'ruby-block)
