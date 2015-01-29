@@ -6,6 +6,7 @@
 ;(depends-on "color-theme-molokai")
 (depends-on "tron-theme")
 
+(depends-on "comment-dwim-2")
 
 ;(depends-on "emoji-cheat-sheet")
 ;(depends-on "direx-project")
@@ -138,3 +139,6 @@
 ; flymake-easy
 ; flymake-ruby
 ; fringe-helper
+
+(depends-on "org-toodledo")
+(depends-on "http-post-simple")
