@@ -140,5 +140,9 @@
 ; flymake-ruby
 ; fringe-helper
 
-(depends-on "org-toodledo")
+;(depends-on "org-toodledo")
 (depends-on "http-post-simple")
+
+(depends-on "ddskk")
+
+(depends-on "howm")

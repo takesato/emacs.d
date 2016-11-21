@@ -4,19 +4,21 @@
 ;; (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
 ;;     (normal-top-level-add-subdirs-to-load-path)))
 
-(setq load-path (append '("/usr/local/Cellar/emacs-mac/emacs-24.4-mac-5.1/share/emacs/site-lisp/skk/") load-path))
+;;;(setq load-path (append '("/usr/local/Cellar/emacs-mac/emacs-24.4-mac-5.3/share/emacs/site-lisp/skk/") load-path))
 ;; SKK
-(let ((function #'(lambda ()
-                    (require 'skk)
-                    (skk-latin-mode-on))))
-  (dolist (hook '(find-file-hooks
-                  ;; ...
-                  mail-setup-hook
-                  message-setup-hook))
-    (add-hook hook function)))
- 
-(setq skk-preload t)
- 
+;(let ((function #'(lambda ()
+;                    (require 'skk)
+;                    (skk-latin-mode-on))))
+;  (dolist (hook '(find-file-hooks
+;                  ;; ...
+;                  mail-setup-hook
+;                  message-setup-hook))
+;    (add-hook hook function)))
+; 
+;(setq skk-preload t)
+; 
+;(global-set-key (kbd "C-x C-j") 'skk-mode)
+
 (setq skk-kutouten-type 'en)
 ;; C-j の機能を別のキーに割り当て
 (global-set-key (kbd "C-m") 'newline-and-indent)
