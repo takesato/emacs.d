@@ -1,3 +1,4 @@
+(package-install 'helm)
 (when (require 'helm-config nil t)
   (helm-mode 1)
 

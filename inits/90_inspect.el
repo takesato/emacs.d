@@ -1,1 +1,0 @@
-/Users/tsato/.homesick/repos/inspect/home/.emacs.d/inits/90_inspect.el

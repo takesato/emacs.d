@@ -1,3 +1,5 @@
+(package-install 'ddskk)
+
 ;;(setq load-path (append load-path '("~/.emacs.d/lisp/skk")))
 ;;(let ((default-directory (expand-file-name "~/.emacs.d/lisp")))
 ;; (add-to-list 'load-path default-directory)
